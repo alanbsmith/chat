@@ -1,4 +1,92 @@
-h1 {
-  font-family: helvetica;
-  font-weight: 200;
+$snow: #F9FAFC;
+$dark-snow: #EFF2F7;
+
+$dark-smoke: #D3DCE6;
+$extra-dark-smoke: #C0CCDA;
+
+$silver: #8492A6;
+$slate: #3C4858;
+$steel: #273444;
+$black: #1F2D3D;
+
+$dark-marvel: #009EEB;
+
+
+.message {
+  padding: 20px;
+  .user-photo {
+    display: inline-block;
+    float: left;
+    height: 40px;
+    width: 40px;
+    border: 1px solid $steel;
+    border-radius: 4px;
+  }
+  .message-header {
+    display: block;
+    h4 {
+      padding: 0px 5px 0px 5px;
+      display: inline-block;
+      margin: 0px;
+    }
+    p.display-time {
+      margin: 0px;
+      display: inline-block;
+      color: $extra-dark-smoke;
+    }
+  }
+  p.message-text {
+    color: $steel;
+    margin-left: 45px;
+  }
+  &:hover {
+    background-color: $snow;
+  }
+}
+
+.sidebar {
+  width: 30%;
+  background-color: $steel;
+}
+.header {
+  background-color: $dark-snow;
+  padding: 30px;
+  h1 {
+    color: $steel;
+    text-align: center;
+  }
+  #menu-toggle {
+    font-size: 24px;
+    color: $steel;
+    font-weight: 100;
+    position: absolute;
+    top: 10px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+#message-form {
+  position: absolute;
+  width: 100%;
+  padding: 5px;
+  bottom: 0;
+  height: 60px;
+  input {
+    padding: 10px;
+    width: 100%;
+    border: solid 2px $steel;
+    border-radius: 4px;
+    font-size: 18px;
+  }
+}
+
+#name-form {
+  padding: 10px;
+  input {
+    border: 2px solid $steel;
+    padding: 10px;
+    border-radius: 4px;
+  }
 }

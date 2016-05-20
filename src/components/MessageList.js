@@ -4,7 +4,7 @@ import Message from './Message';
 const MessageList = (props) => {
   let messageList = props.messages.map( (message, index) => {
     return(
-      <Message key={ index } text={ message } />
+      <Message key={ index } message={ message } />
     )
   });
   return(

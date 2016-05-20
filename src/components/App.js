@@ -1,5 +1,6 @@
 import '../assets/stylesheets/base.scss';
 import React from 'react';
+import Sidebar from 'react-sidebar';
 
 // components
 import MessageList from './MessageList';
@@ -9,7 +10,7 @@ let socket = io.connect();
 
 const App = React.createClass({
   getInitialState() {
-    return { messages: [] };
+    return { messages: [], sidebarOpen: false };
   },
 
   componentDidMount() {
@@ -24,14 +25,29 @@ const App = React.createClass({
     this.setState({ messages: this.state.messages });
   },
 
+  onSetSidebarOpen: function(open) {
+    this.setState({sidebarOpen: open});
+  },
+
   render() {
     return(
-      <div className="container-fluid">
-        <div className="jumbotron">
-          <h1>Buh Bye HipChat</h1>
-        </div>
-        <MessageList messages={ this.state.messages } />
-        <MessageForm handleMessage={ this.addMessage } />
+      <div>
+        <Sidebar
+          sidebarClassName="sidebar"
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}>
+
+          <div className="header">
+            <a className="glyphicon glyphicon-menu-hamburger" id="menu-toggle" onClick={this.onSetSidebarOpen}></a>
+            <h1>Chat</h1>
+          </div>
+          <div>
+            <MessageList messages={ this.state.messages } />
+            <MessageForm
+              handleMessage={ this.addMessage }
+            />
+          </div>
+        </Sidebar>
       </div>
     )
   }
