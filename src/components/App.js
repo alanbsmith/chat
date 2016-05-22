@@ -18,6 +18,21 @@ const App = React.createClass({
       socket.emit('join', 'hello world from the client!');
     });
     socket.on('add-message', this._addMessage);
+    this.getMessages();
+  },
+
+  getMessages() {
+    $.ajax({
+      type: 'get',
+      dataType: 'json',
+      url: 'http://localhost:3000/api/v1/messages.json',
+      success: (data) => {
+        this.setState({ messages: data });
+      },
+      error: (xhr,err) => {
+        console.log(err);
+      }
+    })
   },
 
   _addMessage(data) {

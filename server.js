@@ -4,6 +4,10 @@ var app = express();
 var PORT = process.env.PORT || 8080
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var Promise = require('promise');
+var request = require('request-json');
+var requestClient = request.createClient('http://localhost:3000/');
+
 
 // using webpack-dev-server and middleware in development environment
 if(process.env.NODE_ENV !== 'production') {
@@ -31,8 +35,20 @@ io.on('connection', function(client) {
   });
 
   client.on('new-message', function(data) {
-    io.sockets.emit('add-message', data)
-  })
+
+    var promise = new Promise(function(resolve, reject) {
+      console.log("inside the promise");
+      var messageData = { message: data };
+      requestClient.post('api/v1/messages', messageData, function(err, res, body) {
+        if(err) {
+          reject(err);
+        }
+        else {
+          io.sockets.emit('add-message', body);
+        }
+      })
+    });
+  });
 });
 
 server.listen(PORT, function(error) {

@@ -11,6 +11,10 @@ $black: #1F2D3D;
 
 $dark-marvel: #009EEB;
 
+#message-list {
+  height: 500px;
+  overflow: scroll;
+}
 
 .message {
   padding: 20px;
@@ -68,7 +72,7 @@ $dark-marvel: #009EEB;
 }
 
 #message-form {
-  position: absolute;
+  position: absolute;;
   width: 100%;
   padding: 5px;
   bottom: 0;

@@ -19,7 +19,7 @@ const MessageForm = React.createClass({
     let text = this.refs.message.value.trim();
     let time = moment().format("h:mm a");
     this.refs.message.value = "";
-    socket.emit('new-message', { author: this.state.name, text: text, time: time });
+    socket.emit('new-message', { author: this.state.name, text: text, display_time: time });
   },
 
   render() {
