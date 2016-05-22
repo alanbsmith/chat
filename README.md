@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/alanbsmith/chat.png?label=ready&title=Ready)](https://waffle.io/alanbsmith/chat)
 # Chat
 
 ### UP & RUNNING
