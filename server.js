@@ -6,7 +6,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var Promise = require('promise');
 var request = require('request-json');
-var requestClient = request.createClient('http://localhost:3000/');
+var requestClient = request.createClient('http://localhost:3001/');
 
 
 // using webpack-dev-server and middleware in development environment

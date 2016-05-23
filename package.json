@@ -21,6 +21,7 @@
     "node-sass": "^3.4.2",
     "promise": "^7.1.1",
     "react": "^15.0.1",
+    "react-bootstrap": "^0.29.4",
     "react-dom": "^15.0.1",
     "react-sidebar": "^2.1.2",
     "request-json": "^0.5.6",

@@ -1,10 +1,12 @@
 import React from 'react';
 import moment from 'moment';
+import LoginModal from './LoginModal';
+
 let socket = io.connect();
 
 const MessageForm = React.createClass({
   getInitialState() {
-      return({ name: "" })
+      return({ name: "", showModal: true })
   },
 
   handleName(e) {
@@ -22,10 +24,18 @@ const MessageForm = React.createClass({
     socket.emit('new-message', { author: this.state.name, text: text, display_time: time });
   },
 
+  addName(data) {
+    this.setState({name: data.name });
+  },
+
+  toggleModal() {
+    this.setState({ showModal: !this.state.showModal })
+  },
+
   render() {
     if(this.state.name) {
       return(
-        <div>
+        <div className="footer">
           <form id="message-form" onSubmit={ this.handleSubmit }>
             <input ref="message" type="text" placeholder="type your message here" />
           </form>
@@ -33,11 +43,11 @@ const MessageForm = React.createClass({
       )
     } else {
       return(
-        <div>
-          <form id="name-form" onSubmit={ this.handleName }>
-            <input ref="name" type="text" placeholder="add your name" />
-          </form>
-        </div>
+        <LoginModal
+          addName={this.addName}
+          show={this.state.showModal}
+          hide={this.toggleModal}
+        />
       )
     }
   }

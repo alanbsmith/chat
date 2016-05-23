@@ -7,12 +7,55 @@ $extra-dark-smoke: #C0CCDA;
 $silver: #8492A6;
 $slate: #3C4858;
 $steel: #273444;
-$black: #1F2D3D;
+$black: #262626;
 
 $dark-marvel: #009EEB;
 
+.sidebar {
+  z-index: 2;
+  width: 250px;
+  background-color: $dark-snow;
+  ul {
+    li {
+      list-style: none;
+      a {
+        cursor: pointer;
+        color: $black;
+      }
+      &#sidebar-header {
+        padding: 50px 20px 10px 0px;
+        a {
+          color: $silver;
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  opacity: 0 !important;
+}
+
+.header {
+  padding: 20px;
+  background-color: #ffffff;
+  border-bottom: solid 1px $dark-snow;
+  height: 50px;
+
+  #menu-toggle {
+    font-size: 24px;
+    color: $black;
+    font-weight: 100;
+    position: absolute;
+    top: 10px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 #message-list {
-  height: 500px;
+  height: 1200px;
   overflow: scroll;
 }
 
@@ -23,7 +66,7 @@ $dark-marvel: #009EEB;
     float: left;
     height: 40px;
     width: 40px;
-    border: 1px solid $steel;
+    border: 1px solid $black;
     border-radius: 4px;
   }
   .message-header {
@@ -40,7 +83,7 @@ $dark-marvel: #009EEB;
     }
   }
   p.message-text {
-    color: $steel;
+    color: $black;
     margin-left: 45px;
   }
   &:hover {
@@ -48,49 +91,31 @@ $dark-marvel: #009EEB;
   }
 }
 
-.sidebar {
-  width: 30%;
-  background-color: $steel;
-}
-.header {
-  background-color: $dark-snow;
-  padding: 30px;
-  h1 {
-    color: $steel;
-    text-align: center;
-  }
-  #menu-toggle {
-    font-size: 24px;
-    color: $steel;
-    font-weight: 100;
-    position: absolute;
-    top: 10px;
-    &:hover {
-      text-decoration: none;
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 20px 10px 20px 10px;
+  padding: 5px;
+  height: 70px;
+  background-color: #ffffff;
+  border-top: solid 1px $dark-snow;
+  input {
+    margin-top: 10px;
+    padding: 10px;
+    border: solid 2px $black;
+    border-radius: 4px;
+    padding: 10px;
+    &:focus {
+      outline: none;
     }
   }
-}
-
-#message-form {
-  position: absolute;;
-  width: 100%;
-  padding: 5px;
-  bottom: 0;
-  height: 60px;
-  input {
-    padding: 10px;
-    width: 100%;
-    border: solid 2px $steel;
-    border-radius: 4px;
-    font-size: 18px;
+  #message-form {
+    input {
+      width: 100%;
+    }
   }
-}
+  #name-form {
 
-#name-form {
-  padding: 10px;
-  input {
-    border: 2px solid $steel;
-    padding: 10px;
-    border-radius: 4px;
   }
 }

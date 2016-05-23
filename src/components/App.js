@@ -5,12 +5,12 @@ import Sidebar from 'react-sidebar';
 // components
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
-
+import SidebarContent from './SidebarContent';
 let socket = io.connect();
 
 const App = React.createClass({
   getInitialState() {
-    return { messages: [], sidebarOpen: false };
+    return { messages: [] };
   },
 
   componentDidMount() {
@@ -25,7 +25,7 @@ const App = React.createClass({
     $.ajax({
       type: 'get',
       dataType: 'json',
-      url: 'http://localhost:3000/api/v1/messages.json',
+      url: 'http://localhost:3001/api/v1/messages.json',
       success: (data) => {
         this.setState({ messages: data });
       },
@@ -40,21 +40,16 @@ const App = React.createClass({
     this.setState({ messages: this.state.messages });
   },
 
-  onSetSidebarOpen: function(open) {
-    this.setState({sidebarOpen: open});
-  },
-
   render() {
     return(
       <div>
         <Sidebar
+          sidebar={< SidebarContent />}
           sidebarClassName="sidebar"
-          open={this.state.sidebarOpen}
-          onSetOpen={this.onSetSidebarOpen}>
-
+          shadow={false}
+          docked={true}
+          >
           <div className="header">
-            <a className="glyphicon glyphicon-menu-hamburger" id="menu-toggle" onClick={this.onSetSidebarOpen}></a>
-            <h1>Chat</h1>
           </div>
           <div>
             <MessageList messages={ this.state.messages } />
